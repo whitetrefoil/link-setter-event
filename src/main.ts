@@ -16,3 +16,9 @@ export function linkValueEvent<T>(setter: (val: T) => void) {
 export function linkCheckedEvent(setter: (val: boolean) => void) {
   return linkEvent('checked')<boolean>(setter)
 }
+
+export {
+  linkEvent as le,
+  linkValueEvent as lve,
+  linkCheckedEvent as lce,
+}
