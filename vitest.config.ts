@@ -1,8 +1,7 @@
-import {fileURLToPath} from 'node:url'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import {defineConfig} from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import solid from 'vite-plugin-solid'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import {defineConfig} from 'vitest/config'
 
 
 export default defineConfig({
@@ -19,7 +18,7 @@ export default defineConfig({
   ],
 
   test: {
-    root: fileURLToPath(new URL('.', import.meta.url)),
+    root: '.',
 
     globals: true,
 
@@ -27,16 +26,14 @@ export default defineConfig({
 
     setupFiles: ['./tests/setup.ts'],
 
-    alias: [{find: /^~\/(.*)/u, replacement: fileURLToPath(new URL('src/$1', import.meta.url))}],
-
     reporters: ['verbose'],
 
     restoreMocks: true,
 
     coverage: {
       enabled         : true,
-      include         : ['src/**'],
-      reportsDirectory: 'test_results/vitest',
+      include         : ['./src/**'],
+      reportsDirectory: './test_results/vitest',
       reporter        : [
         ['text'],
         ['lcov'],
